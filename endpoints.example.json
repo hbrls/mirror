@@ -1,0 +1,9 @@
+[
+  { "href": "http://localhost/DIWAPI_CMT/API/Domains" },
+  { "href": "http://localhost/DIWAPI_CMT/API/Graph" },
+  { "href": "http://localhost/DIWAPI_CMT/API/GuidedTour" },
+  { "href": "http://localhost/DIWAPI_CMT/API/Lookup" },
+  { "href": "http://localhost/DIWAPI_CMT/API/Recodes" },
+  { "href": "http://localhost/DIWAPI_CMT/API/Reports" },
+  { "href": "http://localhost/DIWAPI_CMT/API/Scopes" }
+]

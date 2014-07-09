@@ -1,0 +1,30 @@
+{
+  "name": "mirror",
+  "version": "0.0.0",
+  "description": "mirror your exsisting apis to static files based mock apis",
+  "main": "app.js",
+  "scripts": {
+    "test": "grunt test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/shuaishuai/mirror"
+  },
+  "author": "shuaizhexu@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/shuaishuai/mirror/issues"
+  },
+  "homepage": "https://github.com/shuaishuai/mirror",
+  "dependencies": {
+    "nconf": "~0.6.9",
+    "lodash": "~2.4.1",
+    "q": "~1.0.1",
+    "dustjs-linkedin": "~2.4.0",
+    "request": "~2.37.0"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.5",
+    "grunt-contrib-jshint": "~0.10.0"
+  }
+}

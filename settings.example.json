@@ -1,0 +1,12 @@
+{
+  "output_json_dir": "../App_Data/",
+  "output_code_dir": "../Controllers/",
+  "code_template": "ApiController.cs.dust",
+  "url_prefix": "http://localhost/MY_PROJECT/API/",
+  "login": {
+    "href": "http://localhost/MY_PROJECT/API/Login",
+    "method": "POST",
+    "username": "username",
+    "password": "password"
+  }
+}
