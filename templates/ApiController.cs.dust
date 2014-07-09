@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace DIWAPI_MOCK.Controllers
 {
-    public class ApiController : Controller
+    public partial class ApiController : Controller
     {
         private static string DATA_PATH = "~/App_Data/";
 
@@ -20,7 +20,7 @@ namespace DIWAPI_MOCK.Controllers
 
         public String Index()
         {
-            return "[\"I am sorry.\",\"I am sorry too.\",\"I am sorry three.\",\"What are you sorry for?\",\"I am sorry five.\"]";
+            return _return("[\"I am sorry.\",\"I am sorry too.\",\"I am sorry three.\",\"What are you sorry for?\",\"I am sorry five.\"]");
         }
 
         {#endpoints}
