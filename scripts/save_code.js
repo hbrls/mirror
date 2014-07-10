@@ -19,6 +19,7 @@ module.exports = function (endpoints) {
       console.log(err);
     }
 
+    dust.optimizers.format = function(ctx, node) { return node };
     dust.loadSource(dust.compile(data, TEMPLATE_KEY));
 
     dust.render(TEMPLATE_KEY, { endpoints: endpoints }, function (err, out) {
