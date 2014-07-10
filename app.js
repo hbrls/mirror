@@ -26,6 +26,7 @@ var endpoints = _.map(ENDPOINTS, function (ep) {
   return endpoint_format(ep);
 });
 
+// TODO: check duplicate
 
 function main() {
   var d = q.defer();

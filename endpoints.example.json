@@ -1,9 +1,15 @@
 [
+  { "href": "http://localhost/DIWAPI_CMT/api/AccountInfo" },
+  { "href": "http://localhost/DIWAPI_CMT/api/AccountOrganizations" },
+  { "href": "http://localhost/DIWAPI_CMT/api/ApplicationPreference" },
   { "href": "http://localhost/DIWAPI_CMT/API/Domains" },
   { "href": "http://localhost/DIWAPI_CMT/API/Graph" },
   { "href": "http://localhost/DIWAPI_CMT/API/GuidedTour" },
   { "href": "http://localhost/DIWAPI_CMT/API/Lookup" },
+  { "href": "http://localhost/DIWAPI_CMT/API/OrganizationHierarchy?organization=186" },
+  { "href": "http://localhost/DIWAPI_CMT/API/OrganizationHierarchyTree?organization=186" },
   { "href": "http://localhost/DIWAPI_CMT/API/Recodes" },
   { "href": "http://localhost/DIWAPI_CMT/API/Reports" },
-  { "href": "http://localhost/DIWAPI_CMT/API/Scopes" }
+  { "href": "http://localhost/DIWAPI_CMT/API/Scopes" },
+  { "href": "http://localhost/DIWAPI_CMT/API/SelectionsTree?report=summary_1&organization=null&storagekey=org1" }
 ]

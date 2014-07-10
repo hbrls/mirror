@@ -8,25 +8,12 @@ namespace DIWAPI_MOCK.Controllers
 {
     public partial class ApiController : Controller
     {
-        private static string DATA_PATH = "~/App_Data/";
-
-        private string _return(string filename)
-        {
-            Response.ContentType = "application/json";
-
-            string path = HttpContext.Server.MapPath(DATA_PATH + filename);
-            return System.IO.File.ReadAllText(path);
-        }
-
-        public String Index()
-        {
-            return _return("[\"I am sorry.\",\"I am sorry too.\",\"I am sorry three.\",\"What are you sorry for?\",\"I am sorry five.\"]");
-        }
-
         {#endpoints}
         public String {pathname_seg[2]}()
         {
-            return _return("{href_hash}.json");
+            string normalized_href = _normalize(Request.Url);
+            string hash_id = _hash_id(normalized_href);
+            return _return(hash_id + ".json");
         }
         {/endpoints}
     }
