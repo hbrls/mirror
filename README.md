@@ -9,6 +9,7 @@ how-to
 1. if you have to login to consume the apis, please set the `login` in settings.json
 2. if you want to force re-generate, use the `-f` flag, otherwise just remove the json file of which you'd like to refresh
 3. use `node find.js --name org` to find the endpoint
+4. and you have to implement a `Access-Control-Allow-Origin: http://localhost:9876` policy to enable karma tests
 
 endpoints.json
 ==============

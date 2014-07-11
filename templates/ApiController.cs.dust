@@ -9,6 +9,7 @@ namespace DIWAPI_MOCK.Controllers
     public partial class ApiController : Controller
     {
         {#endpoints}
+        [AllowKarma]
         public String {pathname_seg[2]}()
         {
             string normalized_href = _normalize(Request.Url);
