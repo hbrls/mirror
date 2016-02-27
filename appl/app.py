@@ -13,6 +13,7 @@ def create_app(config=None):
     configure_logging(app)
     configure_extensions(app)
     configure_blueprints(app)
+    configure_apis(app)
 
     configure_error_handlers(app)
 
@@ -38,6 +39,11 @@ def configure_extensions(app):
 def configure_blueprints(app):
     from appl.home.views import mod as home_views
     app.register_blueprint(home_views)
+
+
+def configure_apis(app):
+    from .restful import init
+    init(app)
 
 
 def configure_error_handlers(app):

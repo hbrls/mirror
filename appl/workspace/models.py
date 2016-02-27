@@ -17,5 +17,14 @@ class Workspace(Base):
 
 
 def list_workspace():
-    return db.session.query(Workspace) \
-             .all()
+    records = db.session.query(Workspace) \
+                .all()
+    return records
+
+
+def read_workspace(wid):
+    exist = db.session.query(Workspace) \
+              .filter_by(id=wid) \
+              .first()
+
+    return exist
