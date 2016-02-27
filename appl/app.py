@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import logging
 from flask import Flask, render_template, request
+from .extensions import db
 
 
 def create_app(config=None):
@@ -10,6 +11,7 @@ def create_app(config=None):
     app.config.from_object(config)
 
     configure_logging(app)
+    configure_extensions(app)
     configure_blueprints(app)
 
     configure_error_handlers(app)
@@ -26,6 +28,11 @@ def configure_logging(app):
         appl_logger.setLevel(logging.DEBUG)
     else:
         appl_logger.setLevel(logging.INFO)
+
+
+def configure_extensions(app):
+    # Flask-SQLAlchemy
+    db.init_app(app)
 
 
 def configure_blueprints(app):
