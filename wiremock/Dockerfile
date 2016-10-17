@@ -6,7 +6,7 @@ RUN \
   rm -rf /var/cache/apk/*
 
 ENV WM_PACKAGE wiremock
-ENV WM_VERSION 2.0.10-beta
+ENV WM_VERSION 2.2.1
 
 RUN mkdir /$WM_PACKAGE
 WORKDIR /$WM_PACKAGE
@@ -14,4 +14,5 @@ RUN curl -sSL -o $WM_PACKAGE.jar http://repo1.maven.org/maven2/com/github/tomake
 
 EXPOSE 8080
 
+# http://wiremock.org/docs/running-standalone/
 CMD ["java", "-jar", "wiremock.jar", "--verbose" ]
