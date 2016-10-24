@@ -1,0 +1,146 @@
+#!/usr/bin/env node
+
+var program = require('commander');
+var fs = require('fs');
+var spawn = require('child_process').spawn;
+var path = require('path');
+var uuid = require('vanilla.js/random/uuid4');
+var del = require('del');
+var chalk = require('chalk');
+
+/**
+ * Usage.
+ */
+
+program
+  .option('-p, --port <port>', 'Set the HTTP port number', parseInt, 9090)
+  .usage('[project-name] [--port 9090]') // TODO: multiple projects
+  .parse(process.argv);
+
+/**
+ * Help.
+ */
+
+program.on('--help', function () {
+  console.log('  Examples:');
+  console.log();
+  console.log(chalk.gray('    # build from a project folder'));
+  console.log('    $ sentry-cli run matrixsp1');
+  console.log();
+})
+
+/**
+ * Help.
+ */
+
+function help () {
+  program.parse(process.argv);
+  if (program.args.length < 1) return program.help();
+}
+help();
+
+/**
+ * Padding.
+ */
+
+console.log();
+process.on('exit', function () {
+  console.log();
+})
+
+/**
+ * Settings.
+ */
+
+var project = program.args[0];
+// console.log(project);
+// var hasSlash = template.indexOf('/') > -1;
+// var rawName = program.args[1];
+// var inPlace = !rawName || rawName === '.';
+// var name = inPlace ? path.relative('../', process.cwd()) : rawName;
+var src = path.resolve(process.cwd(), project);
+// console.log(src);
+var dest = path.resolve(process.cwd(), 'mappings');
+// console.log(dest);
+var jar = path.resolve(__dirname, '../', 'wiremock-standalone-2.2.1.jar');
+// console.log(jar);
+
+
+function init() {
+  // clean up
+  return del(dest + '/*.json');
+}
+
+function input() {
+  var FLAG = { equalTo: project };
+  var JSON_RESP = { 'Content-Type': 'application/json' };
+
+  return new Promise(function (resolve) {
+    fs.readdir(src, function (err, items) {
+      var mappings = [];
+
+      for (var i = 0; i < items.length; i++) {
+        var mp = require(path.resolve(src, items[i]));
+        if (!mp.uuid) {
+          mp.uuid = uuid();
+        }
+
+        // if (!mp.request.headers) {
+        //   mp.request.headers = {};
+        // }
+        // mp.request.headers['HALLUC-GROUP'] = FLAG;
+
+        if (!mp.response.headers) {
+          mp.response.headers = JSON_RESP;
+        }
+        // console.log(mp);
+        mappings.push(mp);
+      }
+
+      resolve(mappings);
+    });
+  });
+}
+
+function output(mappings) {
+  var q = [];
+  var wr = function (mp) {
+    var filename = path.resolve(dest, `${project}_${mp.uuid}_.json`);
+    return new Promise(function (resolve) {
+      fs.writeFile(filename, JSON.stringify(mp), function (err) {
+        console.log(chalk.gray('    [written] ' + filename));
+        resolve(filename);
+      });
+    })
+  }
+
+  for (var i = 0; i < mappings.length; i++) {
+    var mp = mappings[i];
+    mp.response.body = JSON.stringify(mp.response.body);
+    q.push(wr(mp));
+  }
+
+  return Promise.all(q);
+}
+
+
+init().then(input).then(output).then(function (filename) {
+  console.log(chalk.gray('    [started] use ctrl + c to stop'));
+  console.log();
+
+  var child = spawn('java', ['-jar', jar, '--port', program.port]);
+
+  child.stdout.on('data', function (data) {
+    console.log(`${data}`);
+  });
+
+  child.stderr.on('error', function () {
+    console.log('on error');
+  });
+
+  child.on('close', function (code) {
+    console.log('on close', code);
+  });
+}).catch(function (err) {
+  console.log('[catch]', err);
+});
