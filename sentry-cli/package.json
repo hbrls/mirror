@@ -1,19 +1,24 @@
 {
   "name": "sentry-cli",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "",
   "main": "index.js",
   "preferGlobal": true,
   "bin": {
     "sentry-cli": "bin/sentry-cli"
   },
-  "scripts": {},
+  "scripts": {
+    "postinstall": "node tasks/download.js"
+  },
   "author": "hbrls<shuaizhexu@gmail.com>",
   "license": "MIT",
   "dependencies": {
     "chalk": "1.1.3",
     "commander": "2.9.0",
     "del": "2.2.2",
+    "log": "1.4.0",
+    "mkdirp": "0.5.1",
+    "request": "2.75.0",
     "vanilla.js": "0.0.9"
   }
 }

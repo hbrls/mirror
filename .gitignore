@@ -29,4 +29,5 @@ build/Release
 
 # Dependency directory
 node_modules/
+vendor/
 .npmrc
