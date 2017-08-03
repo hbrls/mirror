@@ -1,0 +1,41 @@
+{
+  "parser": "babel-eslint",
+  "extends": "airbnb",
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "globals": {
+    "app": true,
+    "head": true,
+    "request": true,
+    "mm": true,
+    "mock": true,
+    "assert": true
+  },
+  "settings": {
+    "import/resolver": {
+      "webpack": {
+        "config": "build/webpack.config.dev.js"
+      }
+    }
+  },
+  "rules": {
+    "func-names": 0,
+    "max-len": 0,
+    "no-console": 0,
+    "react/prop-types": [
+      2,
+      {
+        "ignore": [
+          "children",
+          "dispatch",
+          "history",
+          "params",
+          "location",
+          "router"
+        ]
+      }
+    ]
+  }
+}

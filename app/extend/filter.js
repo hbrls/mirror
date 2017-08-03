@@ -1,0 +1,1 @@
+exports.inline = origin => origin;

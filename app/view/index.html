@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <meta name="format-detection" content="telephone=no" />
+  <title>M-O</title>
+
+  {{ helper.rsrc("dist", "index-stamp4hash.css") | safe }}
+</head>
+<body>
+  <div class="App" style="text-align: center">
+    <img src="/public/img/egg-logo.png" alt="" />
+  </div>
+
+  {{ helper.rsrc("dist", "index-stamp4hash.js") | safe | inline }}
+</body>
+</html>
